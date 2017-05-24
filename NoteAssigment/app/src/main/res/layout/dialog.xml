@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"
+            android:textColor="#5feaba"
+            android:text="Choose color" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/imgbtn1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="whitecolor"
+            app:srcCompat="@color/colorAccent" />
+
+        <ImageButton
+            android:id="@+id/imgbtn2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:onClick="Bluecolor"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@android:color/holo_green_dark" />
+
+        <ImageButton
+            android:id="@+id/imgbtn3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:onClick="Redcolor"
+            app:srcCompat="@android:color/holo_red_dark" />
+
+        <ImageButton
+            android:id="@+id/imgbtn4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:onClick="Oriangecolor"
+            app:srcCompat="?attr/colorPrimary" />
+    </LinearLayout>
+
+
+</LinearLayout>
