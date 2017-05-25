@@ -1,4 +1,4 @@
-package com.example.canhbd.noteassigment;
+package com.example.canhbd.noteassigment.utils;
 
 import android.app.Application;
 

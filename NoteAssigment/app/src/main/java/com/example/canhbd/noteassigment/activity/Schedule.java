@@ -1,4 +1,4 @@
-package com.example.canhbd.noteassigment;
+package com.example.canhbd.noteassigment.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
+import com.example.canhbd.noteassigment.R;
+import com.example.canhbd.noteassigment.utils.Realheper;
+import com.example.canhbd.noteassigment.realm.Information;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 
@@ -19,10 +21,12 @@ public class Schedule extends AppCompatActivity {
     Realm realm;
     public AlertDialog dialog;
     EditText Title, Note;
+    String color;
     RealmChangeListener realmChangeListener;
     Spinner dateSpinner, timeSpinner;
     ArrayAdapter adapterDate;
     ArrayAdapter adapterTime;
+    String title,note;
     String[] Datespn = {"Today", "Tomorrow", "Next Week", "Other",};
     String[] timespn = {"9:00", "10:00", "11:00", "12:00",};
 
@@ -41,21 +45,20 @@ public class Schedule extends AppCompatActivity {
     }
 
     public void InsertData(View click) {
-
-        String title = Title.getText().toString();
-        String note = Note.getText().toString();
+        title = Title.getText().toString();
+        note = Note.getText().toString();
         String date,time;
-        Information information = new Information();
-        if (title.isEmpty() || note.isEmpty()) {
 
+        Information information = new Information();
+
+        if (title.isEmpty() || note.isEmpty()) {
             information.setTitle("UnTitle");
             information.setNote("UnNote");
             information.setDate("");
             information.setTime("");
+            information.setColor(color);
             Realheper realheper = new Realheper(realm);
             realheper.save(information);
-
-
         } else {
             date = this.dateSpinner.getSelectedItem().toString();
             time = this.timeSpinner.getSelectedItem().toString();
@@ -63,11 +66,10 @@ public class Schedule extends AppCompatActivity {
             information.setNote(note);
             information.setDate(date);
             information.setTime(time);
+            information.setColor(color);
             Realheper realheper = new Realheper(realm);
             realheper.save(information);
         }
-
-
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
 
@@ -100,32 +102,32 @@ public class Schedule extends AppCompatActivity {
         dialog.show();
     }
 
-    public void whitecolor(View click) {
+    public void While(View click){
         LinearLayout white = (LinearLayout) findViewById(R.id.linewarcolor);
         white.setBackgroundColor(Color.WHITE);
+        color = "WHITE";
         dialog.dismiss();
-
     }
 
     public void Bluecolor(View click) {
         LinearLayout white = (LinearLayout) findViewById(R.id.linewarcolor);
         white.setBackgroundColor(Color.GREEN);
+        color = "GREEN";
         dialog.dismiss();
-
     }
 
     public void Redcolor(View click) {
         LinearLayout white = (LinearLayout) findViewById(R.id.linewarcolor);
         white.setBackgroundColor(Color.RED);
+        color = "RED";
         dialog.dismiss();
-
     }
 
     public void Oriangecolor(View click) {
         LinearLayout white = (LinearLayout) findViewById(R.id.linewarcolor);
         white.setBackgroundColor(Color.BLUE);
+        color = "BLUE";
         dialog.dismiss();
-
     }
 
     @Override

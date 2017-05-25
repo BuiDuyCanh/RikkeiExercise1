@@ -1,4 +1,6 @@
-package com.example.canhbd.noteassigment;
+package com.example.canhbd.noteassigment.utils;
+
+import com.example.canhbd.noteassigment.realm.Information;
 
 import java.util.ArrayList;
 

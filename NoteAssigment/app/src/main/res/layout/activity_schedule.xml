@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:id="@+id/linewarcolor"
     android:layout_height="match_parent"
-    tools:context="com.example.canhbd.noteassigment.Schedule">
+    tools:context="com.example.canhbd.noteassigment.activity.Schedule">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,14 +39,6 @@
             android:onClick="InsertData"/>
 
         <ImageButton
-            android:layout_marginLeft="220dp"
-            android:id="@+id/imgcamera"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:srcCompat="@drawable/camera"
-            android:scaleType="fitXY"/>
-
-        <ImageButton
             android:id="@+id/imglist"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -54,6 +46,14 @@
             android:scaleType="fitXY"
             android:onClick="licstcolorclick"
             app:srcCompat="@drawable/list" />
+
+        <ImageButton
+            android:id="@+id/imgcamera"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="220dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/camera" />
 
 
     </FrameLayout>

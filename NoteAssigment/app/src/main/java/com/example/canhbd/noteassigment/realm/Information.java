@@ -1,4 +1,4 @@
-package com.example.canhbd.noteassigment;
+package com.example.canhbd.noteassigment.realm;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -13,9 +13,15 @@ public class Information extends RealmObject {
     private String note;
     private String date;
     private String time;
+    private String color;
 
+    public String getColor() {
+        return color;
+    }
 
-
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public String getTitle() {
         return title;
