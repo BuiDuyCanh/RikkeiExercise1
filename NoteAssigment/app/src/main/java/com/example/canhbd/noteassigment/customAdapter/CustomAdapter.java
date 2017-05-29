@@ -22,16 +22,12 @@ import java.util.ArrayList;
  * Created by Oclemy on 6/15/2016 for ProgrammingWizards Channel and http://www.camposha.com.
  */
 public class CustomAdapter extends BaseAdapter {
-    int color;
     Context c;
     ArrayList<Information> informations;
-
-
     public CustomAdapter(Context c, ArrayList<Information> Informations) {
         this.c = c;
         this.informations = Informations;
     }
-
     @Override
     public int getCount() {
         return informations.size();
@@ -52,17 +48,13 @@ public class CustomAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(c).inflate(R.layout.customgridview, parent, false);
         }
-
-
         TextView title = (TextView) convertView.findViewById(R.id.txttitle);
         TextView note = (TextView) convertView.findViewById(R.id.txtnote);
         TextView date = (TextView) convertView.findViewById(R.id.txtdate);
-
         final Information infor = (Information) this.getItem(position);
         title.setText(infor.getTitle());
         note.setText(infor.getNote());
         date.setText(infor.getDate());
-
         if (infor.getColor().equals("WHITE")) {
             convertView.setBackgroundColor(Color.WHITE);
         } else if (infor.getColor().equals("GREEN")) {
@@ -73,7 +65,6 @@ public class CustomAdapter extends BaseAdapter {
             (infor.getColor().equals("BLUE")) {
             convertView.setBackgroundColor(Color.BLUE);
         }
-
         return convertView;
     }
 }

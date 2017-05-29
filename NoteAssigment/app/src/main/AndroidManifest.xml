@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Schedule"></activity>
+        <activity android:name=".activity.Schedule" />
+        <activity android:name=".activity.updatedata"></activity>
     </application>
 
 </manifest>

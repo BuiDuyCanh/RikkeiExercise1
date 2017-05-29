@@ -8,13 +8,20 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class Information extends RealmObject {
-    @PrimaryKey
+
+    private int id;
     private String title;
     private String note;
     private String date;
     private String time;
     private String color;
 
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getColor() {
         return color;
     }

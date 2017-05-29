@@ -32,6 +32,7 @@ public class Realheper {
                 public void execute(Realm realm) {
                     try
                     {
+
                         Information s=realm.copyToRealm(information);
                         saved=true;
 
@@ -62,5 +63,17 @@ public class Realheper {
         }
 
         return latest;
+    }
+
+    //Update Data
+    public void updateData(String title,String note,String date, String time, int id){
+        Information information = realm.where(Information.class).equalTo("id",id).findFirst();
+        realm.beginTransaction();
+        information.setTitle(title);
+        information.setNote(note);
+        information.setDate(date);
+        information.setTime(time);
+        realm.commitTransaction();
+
     }
 }

@@ -31,13 +31,13 @@
         >
 
         <ImageButton
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"
             android:id="@+id/imgbtn1"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
             android:onClick="While"
-            app:srcCompat="@color/colorAccent" />
+            app:srcCompat="@android:color/background_light" />
 
         <ImageButton
             android:id="@+id/imgbtn2"
@@ -64,7 +64,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:onClick="Oriangecolor"
-            app:srcCompat="?attr/colorPrimary" />
+            app:srcCompat="@color/colorPrimary" />
     </LinearLayout>
 
 
