@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lnupdatecolor"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/linewarcolor"
     android:layout_height="match_parent"
+    android:background="?attr/colorBackgroundFloating"
+    android:orientation="vertical"
     tools:context="com.example.canhbd.noteassigment.activity.updatedata">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,75 +23,84 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="40dp"
-            android:layout_height="34dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="6dp"
-            app:srcCompat="@drawable/tasknotes" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/imgcolorupdate"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="280dp"
-            android:scaleType="fitXY"
-            android:onClick="licstcolorclick"
-            app:srcCompat="@drawable/list" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                app:srcCompat="@drawable/tasknotes" />
 
-        <ImageButton
-            android:id="@+id/imgcamera"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="220dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/camera" />
+            <ImageButton
+                android:id="@+id/imgupdate"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@color/blue"
+                android:onClick="update"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/symbol" />
 
-        <ImageButton
-            android:id="@+id/imgupdate"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="340dp"
-            android:layout_marginTop="5dp"
-            android:onClick="InsertData"
-            app:srcCompat="@drawable/check" />
+            <ImageButton
+                android:id="@+id/imgcolorupdate"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/blue"
+                android:onClick="licstcolorclick"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/list"
+                android:layout_toStartOf="@+id/imgupdate" />
 
+            <ImageButton
+                android:id="@+id/imgcamera"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:onClick="takePhoto"
+                android:layout_toLeftOf="@+id/imgcolorupdate"
+                android:background="@color/blue"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/camera" />
 
+        </RelativeLayout>
     </FrameLayout>
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
         android:weightSum="1">
+
         <EditText
 
             android:id="@+id/edttitleupdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:hint="Title"
-            android:padding="16dp"/>
+            android:paddingLeft="25dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/edtnoteupdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:hint="Note"
-            android:padding="16dp"/>
+            android:paddingLeft="25dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <ImageButton
@@ -97,24 +108,95 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="16dp"
-            android:scaleType="fitXY"
             android:onClick="DateTime"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/alarm" />
 
         <Spinner
             android:id="@+id/spndateupdate"
             android:layout_width="140dp"
             android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-             />
+            android:layout_marginTop="5dp" />
 
         <Spinner
-            android:layout_marginTop="5dp"
             android:id="@+id/spntimeupdate"
             android:layout_width="100dp"
             android:layout_height="40dp"
+            android:layout_marginTop="5dp"
 
             />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <WebView
+                android:layout_gravity="bottom"
+                android:id="@+id/webviewfacebook"
+                android:layout_width="match_parent"
+                android:visibility="invisible"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <ImageButton
+                android:id="@+id/imgreturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/page2" />
+
+            <ImageButton
+                android:id="@+id/imgfacebok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:onClick="linkFaceBook"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/love" />
+
+            <ImageButton
+                android:id="@+id/imgdelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:onClick="deleteData"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/delete" />
+
+            <ImageButton
+                android:id="@+id/imgnext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:onClick="nextItem"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/page1" />
+        </LinearLayout>
+    </LinearLayout>
+
 
 </LinearLayout>

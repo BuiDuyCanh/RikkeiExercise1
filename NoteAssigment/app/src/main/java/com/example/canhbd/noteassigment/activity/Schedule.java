@@ -61,8 +61,7 @@ public class Schedule extends AppCompatActivity implements DatePickerDialog.OnDa
         Note = (EditText) findViewById(R.id.edtnote);
         //SETUP REALM
         realm = Realm.getDefaultInstance();
-        dateSpinner = (Spinner) findViewById(R.id.spndate);
-        timeSpinner = (Spinner) findViewById(R.id.spntime);
+
         dateSpinner.setOnItemSelectedListener(this);
         timeSpinner.setOnItemSelectedListener(this);
 
@@ -76,6 +75,7 @@ public class Schedule extends AppCompatActivity implements DatePickerDialog.OnDa
         Information information = new Information();
         //check if any user already registered
         Realheper helper=new Realheper(realm);
+
         if(resultUser.size()>0){
             Information exist = resultUser.get(resultUser.size()-1);
             idinfor = exist.getId()+1;
@@ -114,7 +114,6 @@ public class Schedule extends AppCompatActivity implements DatePickerDialog.OnDa
                 information.setColor(color);
                 helper.save(information);
             } else {
-
                 date = this.dateSpinner.getSelectedItem().toString();
                 time = this.timeSpinner.getSelectedItem().toString();
                 information.setId(idinfor);
@@ -137,11 +136,11 @@ public class Schedule extends AppCompatActivity implements DatePickerDialog.OnDa
 
         dateSpinner.setVisibility(View.VISIBLE);
         timeSpinner.setVisibility(View.VISIBLE);
-        //Creating the ArrayAdapter instance having the country list
+
         adapterDate = new ArrayAdapter(this, android.R.layout.simple_spinner_item, DateList);
         adapterDate.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapterTime = new ArrayAdapter(this, android.R.layout.simple_spinner_item, TimeList);
-        adapterDate.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterTime.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         dateSpinner.setAdapter(adapterDate);
         timeSpinner.setAdapter(adapterTime);
@@ -160,7 +159,14 @@ public class Schedule extends AppCompatActivity implements DatePickerDialog.OnDa
         dialog.setContentView(mView);
         dialog.show();
     }
-
+    public void takePhoto(View Click){
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.dialogpicture, null);
+        mBuilder.setView(mView);
+        dialog = mBuilder.create();
+        dialog.setContentView(mView);
+        dialog.show();
+    }
     public void While(View click) {
         LinearLayout white = (LinearLayout) findViewById(R.id.linewarcolor);
         white.setBackgroundColor(Color.WHITE);

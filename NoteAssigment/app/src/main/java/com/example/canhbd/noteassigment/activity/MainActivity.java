@@ -12,6 +12,7 @@ import com.example.canhbd.noteassigment.R;
 import com.example.canhbd.noteassigment.realm.Information;
 import com.example.canhbd.noteassigment.utils.Realheper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
@@ -19,30 +20,31 @@ import io.realm.RealmChangeListener;
 
 public class MainActivity extends AppCompatActivity {
     Realm realm;
-    private List<Information> inforList;
+
     RealmChangeListener realmChangeListener;
     GridView gvInfor;
     CustomAdapter adapter;
-
+    Information inforlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
-        gvInfor= (GridView) findViewById(R.id.gdvinformation);
+        gvInfor = (GridView) findViewById(R.id.gdvinformation);
         //SETUP REALM
-        realm=Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
         //RETRIEVE
-        final Realheper helper=new Realheper(realm);
+        final Realheper helper = new Realheper(realm);
         helper.retrieveFromDB();
         //SETUP ADAPTER
-        adapter=new CustomAdapter(this,helper.justRefresh());
+        adapter = new CustomAdapter(this, helper.justRefresh());
         gvInfor.setAdapter(adapter);
         //DETECT DATA CHANGES
-        realmChangeListener=new RealmChangeListener() {
+        inforlist = new Information();
+        realmChangeListener = new RealmChangeListener() {
             @Override
             public void onChange() {
-                adapter=new CustomAdapter(MainActivity.this,helper.justRefresh());
+                adapter = new CustomAdapter(MainActivity.this, helper.justRefresh());
                 gvInfor.setAdapter(adapter);
             }
         };
@@ -51,14 +53,21 @@ public class MainActivity extends AppCompatActivity {
         gvInfor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent update = new Intent(getApplicationContext(), updatedata.class);
-
-                startActivity(update);
+                Information inforItem = (Information) parent.getItemAtPosition(position);
+                Intent intentUpdate = new Intent(getApplicationContext(), updatedata.class);
+                intentUpdate.putExtra("id",inforItem.getId());
+                intentUpdate.putExtra("title",inforItem.getTitle());
+                intentUpdate.putExtra("note",inforItem.getNote());
+                intentUpdate.putExtra("date",inforItem.getDate());
+                intentUpdate.putExtra("time",inforItem.getTime());
+                intentUpdate.putExtra("color",inforItem.getColor());
+                startActivity(intentUpdate);
             }
         });
     }
-    public void  Add(View click){
-        Intent intent = new Intent(this,Schedule.class);
+
+    public void Add(View click) {
+        Intent intent = new Intent(this, Schedule.class);
         startActivity(intent);
     }
 }

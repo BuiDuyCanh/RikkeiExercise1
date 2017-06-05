@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 
 import com.example.canhbd.noteassigment.R;
+import com.example.canhbd.noteassigment.activity.updatedata;
 import com.example.canhbd.noteassigment.realm.Information;
 
 import java.util.ArrayList;
@@ -65,6 +66,7 @@ public class CustomAdapter extends BaseAdapter {
             (infor.getColor().equals("BLUE")) {
             convertView.setBackgroundColor(Color.BLUE);
         }
+
         return convertView;
     }
 }

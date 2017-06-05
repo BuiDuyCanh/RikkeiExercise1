@@ -19,6 +19,9 @@ public class Realheper {
     public Realheper(Realm realm) {
         this.realm = realm;
     }
+
+
+
     //SAVE
     public Boolean save(final Information information)
     {
@@ -66,14 +69,16 @@ public class Realheper {
     }
 
     //Update Data
-    public void updateData(String title,String note,String date, String time, int id){
-        Information information = realm.where(Information.class).equalTo("id",id).findFirst();
+    public void updateData(int id,String title,String note,String date, String time,String color){
         realm.beginTransaction();
+        Information information = realm.where(Information.class).equalTo("id",id).findFirst();
         information.setTitle(title);
         information.setNote(note);
         information.setDate(date);
         information.setTime(time);
+        information.setColor(color);
         realm.commitTransaction();
-
+        realm.close();
     }
+
 }
